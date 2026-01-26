@@ -42,7 +42,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <div className="fixed inset-0 bg-[url('/carbon_fiber.png')] bg-size-[32px_32px]">
+        <img src="/vignette.png" className="w-full h-full" />
+      </div>
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
