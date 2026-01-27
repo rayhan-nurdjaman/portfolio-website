@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <ContentWrapper>
       <LandingPage>
-        <p className="text-2xl xl:text-3xl text-justify py-4">
+        <p className="text-xl xl:text-3xl text-justify py-4">
           A mechanical engineering student at the{" "}
           <span className="font-bold">National University of Singapore</span>.
           Experienced in CAD using <span className="font-bold">Solidworks</span>
@@ -80,19 +80,19 @@ export default function Home() {
         </p>
         <div className="flex flex-row space-x-4">
           <Button href="https://github.com/satiniize" external={true}>
-            <Github className="h-8 w-8 mx-auto" />
+            <Github className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
           <Button
             href="https://www.linkedin.com/in/rayhan-nurdjaman"
             external={true}
           >
-            <Linkedin className="h-8 w-8 mx-auto" />
+            <Linkedin className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
           <Button href="mailto:rayhansat1210@gmail.com" external={true}>
-            <Mail className="h-8 w-8 mx-auto" />
+            <Mail className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
           <Button href="mailto:rayhansat1210@gmail.com" external={true}>
-            <FileUser className="h-8 w-8 mx-auto" />
+            <FileUser className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
         </div>
       </LandingPage>

@@ -33,7 +33,7 @@ export default function LandingPage({
   return (
     <div className="relative flex flex-col-reverse md:flex-row h-screen">
       <div className="flex flex-1 items-center px-8 pt-4 md:py-0 md:pr-4">
-        <div className="pb-24 md:pb-0">
+        <div className="pb-24 md:pb-0 bg-red-500">
           <p className="text-4xl xl:text-7xl italic select-none">Hello, I'm</p>
 
           <div className="relative text-6xl xl:text-9xl text-bold font-bold italic select-none">
@@ -74,7 +74,7 @@ export default function LandingPage({
 
       {/* Scroll down */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-col items-center">
-        <p className="text-2xl font-bold">Scroll down</p>
+        <p className="text-xl font-bold">Scroll down</p>
         <ChevronsDown className="mx-auto h-8 w-8" />
       </div>
     </div>
