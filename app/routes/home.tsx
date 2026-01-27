@@ -76,8 +76,7 @@ export default function Home() {
           A mechanical engineering student at the{" "}
           <span className="font-bold">National University of Singapore</span>.
           Experienced in CAD using <span className="font-bold">Solidworks</span>
-          . Proficient in C++ and Python. Some filler text to fill the space.
-          Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+          . Proficient in C++ and Python.
         </p>
         <div className="flex flex-row space-x-4">
           <Button href="https://github.com/satiniize" external={true}>
@@ -97,7 +96,7 @@ export default function Home() {
           </Button>
         </div>
       </LandingPage>
-      <MyProjects />
+      {/*<MyProjects />*/}
     </ContentWrapper>
   );
 }
