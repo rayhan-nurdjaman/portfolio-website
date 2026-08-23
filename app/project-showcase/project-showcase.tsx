@@ -12,16 +12,6 @@ export default function MyProjects() {
       thumbnail: "/screenshots/software-renderer/clay-and-sdl-gpu.jpg",
       slug: "software-renderer",
     },
-    {
-      title: "Gauss Chamber",
-      thumbnail: "/screenshots/cycloidal-drive.jpg",
-      slug: "gauss-chamber",
-    },
-    {
-      title: "This Website",
-      thumbnail: "/screenshots/cycloidal-drive.jpg",
-      slug: "this-website",
-    },
   ];
 
   return (

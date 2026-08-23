@@ -37,10 +37,13 @@ export default function Home() {
           >
             <Linkedin className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
-          <Button href="mailto:rayhansat1210@gmail.com" external={true}>
+          <Button href="mailto:rayhan.nurdjaman@u.nus.edu" external={true}>
             <Mail className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
-          <Button href="mailto:rayhansat1210@gmail.com" external={true}>
+          <Button
+            href="/Resume Rayhan Satrio Adi Nurdjaman.pdf"
+            external={true}
+          >
             <FileUser className="h-6 w-6 xl:h-8 xl:w-8 mx-auto" />
           </Button>
         </div>
