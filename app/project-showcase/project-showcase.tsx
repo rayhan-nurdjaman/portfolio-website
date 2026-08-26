@@ -4,12 +4,12 @@ export default function MyProjects() {
   const devlogs = [
     {
       title: "Cycloidal Drives",
-      thumbnail: "/screenshots/cycloidal-drive.jpg",
+      thumbnail: "/screenshots/cycloidal-drive/cycloidal-drive.jpg",
       slug: "cycloidal-drives",
     },
     {
-      title: "Software Renderer",
-      thumbnail: "/screenshots/software-renderer/clay-and-sdl-gpu.jpg",
+      title: "Oxiide",
+      thumbnail: "/screenshots/oxiide/modern-oxiide.png",
       slug: "software-renderer",
     },
   ];

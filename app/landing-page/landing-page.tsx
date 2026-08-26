@@ -12,11 +12,11 @@ export default function LandingPage({
       title: "Rayhan",
     },
     {
-      image: "/screenshots/cycloidal-drive.jpg",
+      image: "/screenshots/cycloidal-drive/cycloidal-drive.jpg",
       title: "an engineer",
     },
     {
-      image: "/screenshots/photo-sorter.png",
+      image: "/screenshots/oxiide/modern-oxiide.png",
       title: "a developer",
     },
   ];

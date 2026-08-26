@@ -1,3 +1,9 @@
+![Test image](/screenshots/cycloidal-drive/IMG_20260113_153006_1.gif)
+![Test image](/screenshots/cycloidal-drive/VID_20260205_234147_2.gif)
+![Test image](/screenshots/cycloidal-drive/IMG_20260826_131855.jpg)
+![Test image](/screenshots/cycloidal-drive/IMG_20260826_131838.jpg)
+![Test image](/screenshots/cycloidal-drive/IMG_20260826_131823.jpg)
+
 # Rolling Over Speed Bumps: Building a Backdrivable 20:1 Cycloidal Actuator
 
 I wanted to actually understand how precision robotic gearboxes work instead of just buying one, so I designed and 3D printed a 20:1 cycloidal drive from scratch, worked out how to get FDM parts to stop binding, and drove it with an STM32 BlackPill and a TMC2209 stepper driver.
@@ -111,10 +117,3 @@ I'm working through two output configurations:
 ![6-DOF Robotic Arm CAD](/screenshots/cycloid-actuator/arm-cad-assembly.jpg)
 
 The end goal is using this as a repeating module for a 6-DOF arm. Already modeled the full assembly in SolidWorks around these actuator envelopes.
-
-### Next up
-
-- Micro limit switches for zero-homing on boot
-- Stall torque and thermal limits under sustained load
-- CAN or UART bus to run multiple STM32 nodes together
-- Print the first two shoulder joints, test deflection under cantilever load

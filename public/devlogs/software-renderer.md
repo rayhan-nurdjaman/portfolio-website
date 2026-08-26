@@ -1,3 +1,5 @@
+![Modern oxiide](/screenshots/oxiide/modern-oxiide.png)
+
 # You Must First Invent the Universe
 
 I built this project because I wanted to make native desktop apps without touching Qt, GTK, or Electron. It started as a 2D software renderer and somehow turned into a hardware-accelerated UI backend and a RAW photo editor that simulates actual film chemistry. Here's how that happened.
@@ -12,7 +14,7 @@ A few months later I gave it another shot, this time with SDL instead of GLFW. G
 
 This one actually went somewhere. I built a 2D engine around an ECS — sprite components got rasterized into a pixel buffer, and that buffer got handed to SDL's renderer. Whether that counts as a "real" software renderer is debatable, but it ran at around 2000 FPS on my Vivobook Pro 15, so I wasn't complaining.
 
-![No alpha amogus](/screenshots/software-renderer/no-alpha.jpg)
+![No alpha amogus](/screenshots/oxiide/no-alpha.jpg)
 
 I also wrote a basic 2D physics engine from scratch:
 
@@ -21,11 +23,11 @@ I also wrote a basic 2D physics engine from scratch:
 3. Resolve velocities post-collision using conservation of momentum and a restitution coefficient, then apply the impulse.
 4. Approximate friction as the friction coefficient times the normal impulse, assuming it acts over the same duration as the collision.
 
-![Physics engine](/screenshots/software-renderer/physics-engine.gif)
+![Physics engine](/screenshots/oxiide/physics-engine.gif)
 
 The FPS counter in that GIF was hovering around 1400, despite the compression making it hard to see clearly.
 
-![Rigidbody physics](/screenshots/software-renderer/rigidbody-physics.jpg)
+![Rigidbody physics](/screenshots/oxiide/rigidbody-physics.jpg)
 
 Eventually this stalled out. It was fun to build, but I had no actual use for a 2D game engine. If I wanted to make games, Godot does everything here better. I wanted a foundation for desktop tools, not games.
 
@@ -41,7 +43,7 @@ Except my renderer was software-based, and that fell apart fast once I tried an 
 
 SDL3 has a lower-level GPU abstraction called SDL_gpu, which gives you something close to an OpenGL-style interface without writing raw Vulkan or DirectX. Since I already had OpenGL-adjacent experience, picking it up wasn't bad.
 
-![Clay and SDL GPU](/screenshots/software-renderer/clay-and-sdl-gpu.jpg)
+![Clay and SDL GPU](/screenshots/oxiide/clay-and-sdl-gpu.jpg)
 
 This eventually grew into a more cohesive UI layout, component, and rendering engine, which I ended up naming it graphiite.
 
@@ -94,6 +96,8 @@ Clay doesn't track any state, so interactive elements like sliders need their ow
 
 ## oxiide: a film-based RAW editor
 
+![Early oxiide](/screenshots/oxiide/early-oxiide.png)
+
 I shoot Fujifilm and like the film-simulation look, but in-camera recipes and LUTs feel a bit limiting. Lightroom, Darktable, and RawTherapee are all built around digital color curves rather than anything resembling actual film chemistry. So on top of graphiite, I started building oxiide — a RAW editor based on how light actually passes through physical dye layers, instead of RGB curve manipulation.
 
 The pipeline:
@@ -101,6 +105,10 @@ The pipeline:
 1. Convert incoming exposure into log exposure (\(\log\_{10} H\)).
 2. Run each channel through a sigmoidal H-D response curve, using \(D*{min}\), \(D*{max}\), slope \(k\), and offset \(x_0\).
 3. Combine dye layers via Beer-Lambert absorption to get final transmittance.
+
+![Early oxiide 2](/screenshots/oxiide/early-oxiide-2.png)
+
+Here's a snippet of the compute shader doing the simulation work
 
 ```glsl
 float sigmoid(float x, float k, float x0) {
@@ -131,19 +139,20 @@ vec4 density_to_transmittance(vec4 pixel) {
 }
 ```
 
+![Middle aged oxiide](/screenshots/oxiide/middle-aged-oxiide.png)
+
 The whole thing runs as one compute shader:
 
 ```text
-RAW file → LibRaw decode (background thread) → uploaded as textures
-  → compute pass: color correction matrix → crosstalk matrix → exposure-to-density → dye absorption → density-to-transmittance → output texture → viewport
+RAW file → LibRaw decode (background thread) → uploaded as textures → compute pass: color correction matrix → crosstalk matrix → exposure-to-density → dye absorption → density-to-transmittance → output texture → viewport
 ```
 
 LibRaw decoding happens on a background thread so the UI never blocks. The compute pass runs right before the render pass, so sliders update live — even on a dual-core ThinkPad T470 with 26MP Fuji RAW files.
-
-![Photo Sorter](/screenshots/photo-sorter.png)
 
 I also implemented a recipe file that compresses user presets into 40 bytes strings shareable as files, allowing users to easily share their presets with other users.
 
 ## Where it stands
 
-graphiite (the rendering backend) is public. oxiide (the editor built on top of it) is private for now. Doing this instead of grabbing Qt or Electron off the shelf took a lot longer, but I ended up with a binary that's under a megabyte, starts instantly, and runs fine on old hardware, which was the whole point.
+![Modern oxiide](/screenshots/oxiide/modern-oxiide.png)
+
+graphiite (the rendering backend) is public on my [GitHub](https://github.com/satiniize). oxiide (the editor built on top of it) is private for now. Get in touch with me to try out the binary! Doing this instead of grabbing Qt or Electron off the shelf took a lot longer, but I ended up with a binary that's under a megabyte, starts instantly, and runs fine on old hardware, which was the whole point.
