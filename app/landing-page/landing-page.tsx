@@ -34,16 +34,18 @@ export default function LandingPage({
     <div className="relative flex flex-col-reverse md:flex-row h-screen">
       <div className="flex flex-1 items-center px-8 pt-4 md:py-0 md:pr-4">
         <div className="pb-24 md:pb-0">
-          <p className="text-4xl xl:text-7xl italic select-none">Hello, I'm</p>
+          <p className="font-instrument-serif text-4xl xl:text-7xl italic select-none">
+            Hello, I'm
+          </p>
 
           <div className="relative text-6xl xl:text-9xl text-bold font-bold italic select-none">
             <p className="text-transparent">{carousel[1]["title"]}</p>
             {carousel.map((item, index) => (
               <p
                 key={index}
-                className={`absolute bottom-0 transition-[filter,opacity] duration-500 ease-in-out ${
+                className={`absolute font-instrument-serif bottom-0 transition-[filter,opacity] duration-500 ease-in-out ${
                   index == currentIndex
-                    ? "text-white blur-none"
+                    ? "blur-none"
                     : "text-transparent blur-lg"
                 }`}
               >

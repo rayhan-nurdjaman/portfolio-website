@@ -44,9 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
-      <div className="fixed inset-0 bg-[url('/carbon_fiber.png')] bg-size-[32px_32px]">
-        <img src="/vignette.png" className="w-full h-full" />
-      </div>
+      <div className="fixed inset-0 bg-white"></div>
       <Outlet />
     </>
   );

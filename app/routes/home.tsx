@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <ContentWrapper>
       <LandingPage>
-        <p className="text-xl xl:text-3xl text-justify py-4">
+        <p className="text-2xl text-justify py-4">
           A mechanical engineering student at the{" "}
           <span className="font-bold">National University of Singapore</span>.
           Experienced in CAD using <span className="font-bold">Solidworks</span>

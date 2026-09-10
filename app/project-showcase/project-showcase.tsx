@@ -7,16 +7,16 @@ export default function MyProjects() {
       thumbnail: "/screenshots/cycloidal-drive/cycloidal-drive.jpg",
       slug: "cycloidal-drives",
     },
-    {
-      title: "Oxiide",
-      thumbnail: "/screenshots/oxiide/modern-oxiide.png",
-      slug: "software-renderer",
-    },
+    // {
+    //   title: "Oxiide",
+    //   thumbnail: "/screenshots/oxiide/modern-oxiide.png",
+    //   slug: "software-renderer",
+    // },
   ];
 
   return (
     <div className="w-full min-h-screen">
-      <h1 className="z-10 text-7xl font-bold italic text-white drop-shadow-md w-fit mx-auto pt-8">
+      <h1 className="font-instrument-serif z-10 text-7xl font-bold italic drop-shadow-md w-fit mx-auto pt-8">
         My Projects
       </h1>
       <div className="grid grid-cols-2 gap-8 p-8 max-w-6xl mx-auto">
