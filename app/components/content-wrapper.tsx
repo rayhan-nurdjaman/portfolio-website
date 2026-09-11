@@ -16,7 +16,7 @@ function ContentWrapper({ children }: Readonly<{ children: React.ReactNode }>) {
 
   return (
     <div
-      className={`h-fit mx-auto w-full space-y-4 transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}
+      className={`h-fit mx-auto w-full transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "opacity-0"}`}
     >
       {children}
     </div>

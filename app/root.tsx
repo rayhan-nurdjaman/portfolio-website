@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import {
   isRouteErrorResponse,
   Links,
@@ -32,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-neutral-50 text-neutral-900">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -42,11 +43,52 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (gridRef.current) {
+            // Speed factor: 0.3 means grid scrolls at 30% speed
+            const speed = 0.3;
+            const offset = -window.scrollY * speed;
+            gridRef.current.style.backgroundPositionY = `${offset}px`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <>
-      <div className="fixed inset-0 bg-white"></div>
-      <Outlet />
-    </>
+    <div className="relative min-h-screen">
+      {/* Global Parallax CAD Grid */}
+      <div
+        ref={gridRef}
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+            linear-gradient(to bottom, #e5e5e5 1px, transparent 1px)
+          `,
+          backgroundSize: "1in 1in",
+          willChange: "background-position",
+        }}
+      />
+
+      {/* Page Content */}
+      <div className="relative z-10">
+        <Outlet />
+      </div>
+    </div>
   );
 }
 
@@ -67,7 +109,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
+    <main className="pt-16 p-4 container mx-auto relative z-10">
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
